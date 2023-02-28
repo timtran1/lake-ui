@@ -5,13 +5,12 @@ import {useEffect, useState} from "react";
 import './css/Sidebar.css'
 
 interface SidebarProps extends baseProps {
-    useOpen?: [boolean, (open: boolean) => void]
-
+    useOpen: [boolean, (open: boolean) => void]
 }
 
 export default function (props: SidebarProps) {
     const {useOpen, children, className, ...other} = props
-    const [open, setOpen] = useOpen ? useOpen : [null, null]
+    const [open, setOpen] = useOpen
     const [visibility, setVisibility] = useState(open ? 'open' : '')
 
     useEffect(() => {
