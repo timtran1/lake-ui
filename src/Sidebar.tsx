@@ -1,3 +1,4 @@
+import React from 'react'
 import baseProps from './types/basePropType'
 import {useEffect, useState} from "react";
 
