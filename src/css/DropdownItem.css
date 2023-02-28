@@ -1,0 +1,10 @@
+.lake-dropdown-item {
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+.lake-dropdown-item.hover:hover {
+    background: #f1f5f9;
+}

@@ -1,0 +1,23 @@
+.lake-dropdown-wrap {
+    position: relative;
+    /*display: inline-block;*/
+}
+
+.lake-dropdown-content {
+    z-index: 30;
+    position: absolute;
+    right: 0;
+    background: white;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    min-width: 100px;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    transition-property: all;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+    display: none;
+}
+
+.lake-dropdown-content.open {
+    display: block;
+}

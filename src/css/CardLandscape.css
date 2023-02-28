@@ -1,0 +1,4 @@
+.vr-card-wrap:hover img {
+    --webkit-transform: scale(1.15);
+    transform: scale(1.15);
+}
