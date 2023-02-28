@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import baseProps from './types/basePropType'
 
 import './css/Button.css'
