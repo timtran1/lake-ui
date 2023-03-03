@@ -51,7 +51,7 @@ export default function Tabs(props: TabsProps) {
     return (
         <div className="lake-tabs-wrap">
             {!tabless &&
-                <div className={`lake-tabs-bg ${className}`}>
+                <div className={`lake-tabs-bg ${className}`} {...other}>
                     {tabs.map((tab, index) =>
                         <Tab
                             key={index}
