@@ -20,7 +20,7 @@ interface TabProps {
 function Tab(props: TabProps) {
     const {index, tab} = props
     const [currentTabIndex, setCurrentTabIndex] = props.useCurrentTabIndex
-    const [translateX, setTranslateX] = useState(currentTabIndex === index ? '' : 'translate-right')
+    const [translateX, setTranslateX] = useState(currentTabIndex === index ? '' : 'translate-left')
     const prevTabIndex = usePrevious(currentTabIndex)
 
     useEffect(() => {
