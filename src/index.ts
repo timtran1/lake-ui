@@ -5,7 +5,7 @@ import {default as Sidebar} from './Sidebar';
 import {default as Tabs} from './Tabs';
 import {default as TabPanel} from './TabPanel';
 import {default as TopBar} from './TopBar';
-
+import {default as Toast} from './Toast';
 
 export {
     Input,
@@ -14,5 +14,6 @@ export {
     Sidebar,
     Tabs,
     TabPanel,
-    TopBar
+    TopBar,
+    Toast
 };
