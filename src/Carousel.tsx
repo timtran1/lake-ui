@@ -4,10 +4,14 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRight, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import baseProps from "./types/basePropType";
 
+import './css/Carousel.css'
+
 export interface CarouselProps extends baseProps {
     autoPlay?: boolean
     delay?: number
     disableButtons?: boolean
+    insetControls?: boolean
+    pauseOnHover?: boolean
     renderNext?: (nextFunc: () => void) => React.ReactNode
     renderPrev?: (prevFunc: () => void) => React.ReactNode
 }
@@ -60,6 +64,8 @@ export default function (props: CarouselProps) {
         renderNext,
         renderPrev,
         disableButtons,
+        insetControls,
+        pauseOnHover,
         ...other
     } = props
     const [index, setIndex] = useState(0)
@@ -91,11 +97,11 @@ export default function (props: CarouselProps) {
     }
 
     function onMouseEnter() {
-        setPause(true)
+        if (pauseOnHover !== false) setPause(true)
     }
 
     function onMouseLeave() {
-        setPause(false)
+        if (pauseOnHover !== false) setPause(false)
     }
 
     return (
@@ -103,7 +109,7 @@ export default function (props: CarouselProps) {
             className={`lake-carousel ${className}`} {...other}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}>
-            <div>
+            <div className={`${insetControls ? 'lake-carousel-inset-controls-left' : ''}`}>
                 {disableButtons ? null : renderPrev ? renderPrev(prev) : <button
                     className={`lake-carousel-btn`}
                     onClick={prev}>
@@ -117,7 +123,7 @@ export default function (props: CarouselProps) {
                     </CarouselPanel>)
                 }
             </div>
-            <div>
+            <div className={`${insetControls ? 'lake-carousel-inset-controls-right' : ''}`}>
                 {disableButtons ? null : renderNext ? renderNext(next) : <button
                     className={`lake-carousel-btn`}
                     onClick={next}>
