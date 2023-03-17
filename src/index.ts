@@ -6,6 +6,7 @@ import {default as Tabs} from './Tabs';
 import {default as TabPanel} from './TabPanel';
 import {default as TopBar} from './TopBar';
 import {default as Toast} from './Toast';
+import {default as Carousel} from './Carousel';
 
 export {
     Input,
@@ -15,5 +16,6 @@ export {
     Tabs,
     TabPanel,
     TopBar,
-    Toast
+    Toast,
+    Carousel
 };
