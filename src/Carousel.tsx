@@ -111,6 +111,7 @@ export default function (props: CarouselProps) {
             onMouseLeave={onMouseLeave}>
             <div className={`${insetControls ? 'lake-carousel-inset-controls-left' : ''}`}>
                 {disableButtons ? null : renderPrev ? renderPrev(prev) : <button
+                    aria-label={'Previous'}
                     className={`lake-carousel-btn`}
                     onClick={prev}>
                     <FontAwesomeIcon icon={faArrowLeft}/>
@@ -125,6 +126,7 @@ export default function (props: CarouselProps) {
             </div>
             <div className={`${insetControls ? 'lake-carousel-inset-controls-right' : ''}`}>
                 {disableButtons ? null : renderNext ? renderNext(next) : <button
+                    aria-label={'Next'}
                     className={`lake-carousel-btn`}
                     onClick={next}>
                     <FontAwesomeIcon icon={faArrowRight}/>
