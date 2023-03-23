@@ -5,13 +5,15 @@ import './css/Dropdown.css'
 
 export interface DropdownProps extends baseProps {
     renderToggle: React.ReactNode
+    top?: boolean
+    left?: boolean
     onOpen?: () => void
     onClose?: () => void
 }
 
 export default function (props: DropdownProps) {
     const [menuOpen, setMenuOpen] = useState(false)
-    const {renderToggle, onOpen, onClose, children, ...other} = props
+    const {renderToggle, top, left, onOpen, onClose, children, ...other} = props
     const ref = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -48,7 +50,7 @@ export default function (props: DropdownProps) {
 
             <div
                 // todo: replace right-0 with dynamic postion based on viewport
-                className={`lake-dropdown-content ${menuOpen ? 'open' : ''}`}
+                className={`lake-dropdown-content ${top ? 'top' : ''} ${left ? 'left' : ''} ${menuOpen ? 'open' : ''}`}
                 {...other}
             >
                 {children}
