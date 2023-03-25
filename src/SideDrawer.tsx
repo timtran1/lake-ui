@@ -2,13 +2,13 @@ import React from 'react'
 import baseProps from './types/basePropType'
 import {useEffect, useState} from "react";
 
-import './css/Sidebar.css'
+import './css/SideDrawer.css'
 
-interface SidebarProps extends baseProps {
+interface SideDrawerProps extends baseProps {
     useOpen: [boolean, (open: boolean) => void]
 }
 
-export default function (props: SidebarProps) {
+export default function (props: SideDrawerProps) {
     const {useOpen, children, className, ...other} = props
     const [open, setOpen] = useOpen
     const [visibility, setVisibility] = useState(open ? 'open' : '')
