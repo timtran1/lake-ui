@@ -6,10 +6,11 @@ import './css/SideDrawer.css'
 
 interface SideDrawerProps extends baseProps {
     useOpen: [boolean, (open: boolean) => void]
+    right?: boolean
 }
 
 export default function (props: SideDrawerProps) {
-    const {useOpen, children, className, ...other} = props
+    const {useOpen, right, children, className, ...other} = props
     const [open, setOpen] = useOpen
     const [visibility, setVisibility] = useState(open ? 'open' : '')
 
@@ -23,7 +24,7 @@ export default function (props: SideDrawerProps) {
             <div className={`lake-sidebar-bg `} onClick={() => setOpen(false)}/>
 
             <aside
-                className={`lake-sidebar-content ${open ? 'open' : ''} ${className}`}
+                className={`lake-sidebar-content ${right? 'right' : ''} ${open ? 'open' : ''} ${className}`}
                 {...other}
             >
                 {children}
