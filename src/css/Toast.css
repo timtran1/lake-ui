@@ -1,23 +1,40 @@
 .lake-toast {
     position: fixed;
-    padding: 0 0.25em 0 0.25em;
+    top: 0.75rem;
+    right: 0.75rem;
+
+    padding: 0 0.25rem 0 0.25rem;
     filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
     display: flex;
     justify-content: center;
     align-items: flex-start;
     border-radius: 0.25rem;
     transition: all 0.3s;
-    background: #3b82f6;
+    background: black;
     color: white;
-    opacity: 0;
     transform: scale(0.5);
-    top: 1em;
-    right: 1em;
+    z-index: 40;
+}
+
+.lake-toast.show {
+    opacity: 1;
+}
+
+.lake-toast.hide {
+    opacity: 0;
+}
+
+.lake-toast.left {
+    left: 0.75rem;
+    right: unset;
+}
+
+.lake-toast.bottom {
+    bottom: 0.75rem;
+    top: unset;
 }
 
 .lake-toast.open {
-    opacity: 1;
-    z-index: 20;
     transform: scale(1);
 }
 

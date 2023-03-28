@@ -7,37 +7,40 @@ import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
 import './css/Toast.css'
 
-export interface ToastProps extends baseProps{
+export interface ToastProps extends baseProps {
     timeOut?: number
+    left?: boolean
+    bottom?: boolean
+    disableAutoClose?: boolean
+    disableCloseBtn?: boolean
     useOpen: [boolean, (open: boolean) => void]
 }
 
-export default function (props:ToastProps) {
-    const {timeOut, useOpen, children, className, ...other} = props
+export default function (props: ToastProps) {
+    const {timeOut, left, bottom, disableAutoClose, disableCloseBtn, useOpen, children, className, ...other} = props
     const [open, setOpen] = useOpen
+    const [opacity, setOpacity] = useState(open ? 'show' : 'hide')
     const [timeOutId, setTimeOutId] = useState(0)
 
     useEffect(() => {
-        if (open) setTimeOutId(setTimeout(close, timeOut || 3000))
-        return () => clearTimeout(timeOutId)
-    }, [open])
+        if (open) setOpacity('show')
+        if (open && !disableAutoClose) setTimeOutId(setTimeout(() => setOpen(false), timeOut || 3000))
+        if (!open) setTimeout(() => setOpacity('hide'), 100)
 
-    function close() {
-        setOpen(false)
-        clearTimeout(timeOutId)
-    }
+        return () => clearTimeout(timeOutId)
+    }, [open, disableAutoClose])
 
     return (
         <div
-            className={`lake-toast ${open ? 'open' : ''} ${className}`}
+            className={`lake-toast ${opacity} ${left ? 'left' : ''} ${bottom ? 'bottom' : ''} ${open ? 'open' : ''} ${className}`}
             {...other}
         >
             <div className={`lake-toast-content`}>
                 {children}
             </div>
 
-            <Button
-                onClick={close}
+            {!disableCloseBtn && <Button
+                onClick={() => setOpen(false)}
                 hoverEffect={false}
                 style={{
                     background: 'transparent',
@@ -46,7 +49,7 @@ export default function (props:ToastProps) {
                 }}
             >
                 <FontAwesomeIcon icon={faXmark}/>
-            </Button>
+            </Button>}
         </div>
     )
 }

@@ -3,10 +3,7 @@ import baseProps from './types/basePropType'
 
 import './css/TopBar.css'
 
-interface TopBarProps extends baseProps {
-    hoverEffect?: boolean
-}
-export default function (props: TopBarProps) {
+export default function (props: baseProps) {
     const {children, className, ...other} = props
 
     return (
