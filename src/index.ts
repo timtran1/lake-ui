@@ -11,6 +11,7 @@ import {default as Dialog} from './Dialog';
 import {default as Dropdown} from './Dropdown';
 import {default as DropdownItem} from './DropdownItem';
 import {default as Switch} from './Switch';
+import {default as Checkbox} from './Checkbox';
 
 export {
     Input,
@@ -25,5 +26,6 @@ export {
     Dialog,
     Dropdown,
     DropdownItem,
-    Switch
+    Switch,
+    Checkbox
 };

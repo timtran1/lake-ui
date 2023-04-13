@@ -1,5 +1,5 @@
 {
-  "name": "@asynctech/lake-ui",
+  "name": "@deepsel/lake-ui",
   "version": "1.4.6",
   "description": "",
   "main": "src/index.ts",
@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "publish": "npm publish"
+    "publish": "npm publish --access public"
   },
   "author": "",
   "license": "ISC",
