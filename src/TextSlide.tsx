@@ -76,7 +76,7 @@ export default function TextSlide(props: TextSlideProps) {
     };
 
     return (
-        <div ref={ref} className={`border border-black lake-text-slide-wrap ${className || ''}`}>
+        <div ref={ref} className={`lake-text-slide-wrap ${className || ''}`}>
             {Array.isArray(children) ? children.map(renderChild) : renderChild(children, 0)}
         </div>
     );
