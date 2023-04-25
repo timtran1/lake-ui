@@ -13,11 +13,12 @@
     background: black;
     color: white;
     transform: scale(0.5);
-    z-index: 40;
+    z-index: -1;
 }
 
 .lake-toast.show {
     opacity: 1;
+    z-index: 40;
 }
 
 .lake-toast.hide {
