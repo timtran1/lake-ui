@@ -53,18 +53,18 @@ export default function TextSlide(props: TextSlideProps) {
         }
 
         // react node
-        if (typeof child === 'object') {
+        else if (typeof child === 'object') {
             return (
                 <div className={`lake-text-slide-wrap`} key={index}>
                     {{
                         ...child,
                         props: {
+                            ...child.props,
                             className: `${child.props.className || ''} ${textTranslate} lake-text-slide-content`,
                             style: {
                                 ...child.props.style || {},
                                 transitionDuration: duration || defaultTransitionDuration,
                             },
-                            key: index,
                         }
                     }}
                 </div>
