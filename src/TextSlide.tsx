@@ -4,7 +4,7 @@ import baseProps from './types/basePropType'
 
 import './css/TextSlide.css'
 
-const defaultTransitionDuration = '300ms'
+const defaultTransitionDuration = '1000ms'
 const defaultDelay = 300
 
 export interface TextSlideProps extends baseProps {
