@@ -1,6 +1,10 @@
 {
   "name": "@deepsel/lake-ui",
+<<<<<<< HEAD
   "version": "1.5.1",
+=======
+  "version": "1.4.6",
+>>>>>>> 70330e4031013019cc969311c4e22f47039dccb2
   "description": "",
   "main": "src/index.ts",
   "files": [
@@ -8,7 +12,7 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\"",
-    "publish": "npm publish"
+    "publish": "npm publish --access public"
   },
   "author": "",
   "license": "ISC",
