@@ -4,9 +4,9 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRight, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
 import baseProps from "./types/basePropType";
 
-import './css/Carousel.css'
+import './css/Slider.css'
 
-export interface CarouselProps extends baseProps {
+export interface SliderProps extends baseProps {
     autoPlay?: boolean
     delay?: number
     disableButtons?: boolean
@@ -16,13 +16,13 @@ export interface CarouselProps extends baseProps {
     renderPrev?: (prevFunc: () => void) => React.ReactNode
 }
 
-export interface CarouselPanelProps extends baseProps {
+export interface SliderPanelProps extends baseProps {
     index: number
     currentIndex: number
 }
 
 
-function CarouselPanel(props: CarouselPanelProps) {
+function SliderPanel(props: SliderPanelProps) {
     const {children, index, currentIndex} = props
     const [translateX, setTranslateX] = useState(currentIndex === index ? '' : 'hold-right')
     const prevIndex = usePrevious(currentIndex)
@@ -49,13 +49,13 @@ function CarouselPanel(props: CarouselPanelProps) {
     }, [currentIndex])
 
     return (
-        <div className={`lake-carousel-panel ${translateX} ${index}`}>
+        <div className={`lake-slider-panel ${translateX} ${index}`}>
             {children}
         </div>
     )
 }
 
-export default function (props: CarouselProps) {
+export default function (props: SliderProps) {
     const {
         autoPlay,
         delay,
@@ -106,28 +106,28 @@ export default function (props: CarouselProps) {
 
     return (
         <div
-            className={`lake-carousel ${className}`} {...other}
+            className={`lake-slider ${className}`} {...other}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}>
-            <div className={`${insetControls ? 'lake-carousel-inset-controls-left' : ''}`}>
+            <div className={`${insetControls ? 'lake-slider-inset-controls-left' : ''}`}>
                 {disableButtons ? null : renderPrev ? renderPrev(prev) : <button
                     aria-label={'Previous'}
-                    className={`lake-carousel-btn`}
+                    className={`lake-slider-btn`}
                     onClick={prev}>
                     <FontAwesomeIcon icon={faArrowLeft}/>
                 </button>}
             </div>
-            <div className={`lake-carousel-content`}>
+            <div className={`lake-slider-content`}>
                 {React.Children.map(children, (child, i) =>
-                    <CarouselPanel key={i} index={i} currentIndex={index}>
+                    <SliderPanel key={i} index={i} currentIndex={index}>
                         {child}
-                    </CarouselPanel>)
+                    </SliderPanel>)
                 }
             </div>
-            <div className={`${insetControls ? 'lake-carousel-inset-controls-right' : ''}`}>
+            <div className={`${insetControls ? 'lake-slider-inset-controls-right' : ''}`}>
                 {disableButtons ? null : renderNext ? renderNext(next) : <button
                     aria-label={'Next'}
-                    className={`lake-carousel-btn`}
+                    className={`lake-slider-btn`}
                     onClick={next}>
                     <FontAwesomeIcon icon={faArrowRight}/>
                 </button>}

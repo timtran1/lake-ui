@@ -6,7 +6,7 @@ import {default as Tabs} from './Tabs';
 import {default as TabPanel} from './TabPanel';
 import {default as TopBar} from './TopBar';
 import {default as Toast} from './Toast';
-import {default as Carousel} from './Carousel';
+import {default as Slider} from './Slider';
 import {default as Dialog} from './Dialog';
 import {default as Dropdown} from './Dropdown';
 import {default as DropdownItem} from './DropdownItem';
@@ -24,7 +24,7 @@ export {
     TabPanel,
     TopBar,
     Toast,
-    Carousel,
+    Slider,
     Dialog,
     Dropdown,
     DropdownItem,
