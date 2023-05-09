@@ -1,0 +1,28 @@
+.lake-text-slide-wrap {
+    overflow: hidden;
+}
+
+.lake-text-slide-content {
+    transition: transform;
+}
+
+.lake-text-slide-left {
+    transform: translateX(-100%);
+    margin: 0;
+}
+
+.lake-text-slide-right {
+    transform: translateX(100%);
+    margin: 0;
+}
+
+.lake-text-slide-bottom {
+    transform: translateY(100%);
+    margin: 0;
+}
+
+.lake-text-slide-top {
+    transform: translateY(-100%);
+    margin: 0;
+}
+

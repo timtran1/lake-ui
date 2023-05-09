@@ -11,6 +11,8 @@ import {default as Dialog} from './Dialog';
 import {default as Dropdown} from './Dropdown';
 import {default as DropdownItem} from './DropdownItem';
 import {default as Switch} from './Switch';
+import {default as TextSlide} from './TextSlide';
+import {default as useIsInViewport} from './utilities/useIsInViewport';
 import {default as Checkbox} from './Checkbox';
 
 export {
@@ -27,5 +29,7 @@ export {
     Dropdown,
     DropdownItem,
     Switch,
+    TextSlide,
+    useIsInViewport,
     Checkbox
 };

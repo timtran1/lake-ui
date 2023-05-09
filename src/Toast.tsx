@@ -8,12 +8,12 @@ import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import './css/Toast.css'
 
 export interface ToastProps extends baseProps {
+    useOpen: [boolean, (open: boolean) => void]
     timeOut?: number
     left?: boolean
     bottom?: boolean
     disableAutoClose?: boolean
     disableCloseBtn?: boolean
-    useOpen: [boolean, (open: boolean) => void]
 }
 
 export default function (props: ToastProps) {
@@ -24,8 +24,9 @@ export default function (props: ToastProps) {
 
     useEffect(() => {
         if (open) setOpacity('show')
+        else setTimeout(() => setOpacity('hide'), 100)
+
         if (open && !disableAutoClose) setTimeOutId(setTimeout(() => setOpen(false), timeOut || 3000))
-        if (!open) setTimeout(() => setOpacity('hide'), 100)
 
         return () => clearTimeout(timeOutId)
     }, [open, disableAutoClose])
