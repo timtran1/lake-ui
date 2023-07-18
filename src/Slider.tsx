@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import usePrevious from "./utilities/usePrevious";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowRight, faArrowLeft} from "@fortawesome/free-solid-svg-icons";
@@ -24,10 +24,62 @@ export interface SliderPanelProps extends baseProps {
 
 function SliderPanel(props: SliderPanelProps) {
     const {children, index, currentIndex} = props
+    const ref = useRef<HTMLDivElement>(null);
     const [translateX, setTranslateX] = useState(currentIndex === index ? '' : 'hold-right')
-    const prevIndex = usePrevious(currentIndex)
+    const prevIndex = usePrevious(currentIndex) || 0;
 
     useEffect(() => {
+        if (Math.abs(currentIndex - prevIndex) > 1) {
+            handleReverse();
+        } else {
+            handleNormal();
+        }
+        
+    }, [currentIndex])
+
+    const handleReverse = () => {
+        if (!ref.current) {
+            return;
+        }
+        // right click (ex: index from 3 -> 0)
+        if (prevIndex > currentIndex) {
+            if (currentIndex === index) {
+                // move to the right immediately, then move to center by replace with active class
+                ref.current.classList.remove('hold-left', 'slide-left');
+                ref.current.classList.add('hold-right');
+                setTranslateX('active');
+            } else {
+                if (prevIndex === index) { // leaving away from this panel
+                    setTranslateX('slide-left');
+                } else { // return to holding position
+                    if (index > currentIndex) {// hold on the right
+                        setTranslateX('hold-right')
+                    } else { // hold on the left
+                        setTranslateX('hold-left')
+                    }
+                }
+            }
+        } else {
+            if (currentIndex === index) {
+                // move to the left immediately, then move to center by replace with active class
+                ref.current.classList.remove('hold-right', 'slide-right');
+                ref.current.classList.add('hold-left');
+                setTranslateX('active');
+            } else {
+                if (prevIndex === index) { // leaving away from this panel
+                    setTranslateX('slide-right');
+                } else { // return to holding position
+                    if (index > currentIndex) {// hold on the right
+                        setTranslateX('hold-right')
+                    } else { // hold on the left
+                        setTranslateX('hold-left')
+                    }
+                }
+            }
+        }
+    }
+
+    const handleNormal = () => {
         if (currentIndex === index) { // this is now active panel
             setTranslateX('active')
         } else { // this is not active panel
@@ -46,10 +98,10 @@ function SliderPanel(props: SliderPanelProps) {
 
             }
         }
-    }, [currentIndex])
+    }
 
     return (
-        <div className={`lake-slider-panel ${translateX} ${index}`}>
+        <div ref={ref} className={`lake-slider-panel ${translateX} ${index}`}>
             {children}
         </div>
     )
