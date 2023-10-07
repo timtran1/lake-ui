@@ -14,6 +14,7 @@ import {default as Switch} from './Switch';
 import {default as TextSlide} from './TextSlide';
 import {default as useIsInViewport} from './utilities/useIsInViewport';
 import {default as Checkbox} from './Checkbox';
+import {default as TypingAnimation} from './TypingAnimation';
 
 export {
     Input,
@@ -31,5 +32,6 @@ export {
     Switch,
     TextSlide,
     useIsInViewport,
-    Checkbox
+    Checkbox,
+    TypingAnimation
 };
