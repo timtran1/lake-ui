@@ -9,6 +9,7 @@ export interface TypingAnimationProps extends baseProps {
     stepDuration?: number
     // only allow text node children
     children: string
+    repeat?: boolean
 }
 
 export default function TypingAnimation(props: TypingAnimationProps) {
@@ -16,8 +17,7 @@ export default function TypingAnimation(props: TypingAnimationProps) {
         cursorColor = 'black',
         textColor = 'black',
         stepDuration = 0.05,
-
-
+        repeat = true,
         children,
         className = '',
         ...other

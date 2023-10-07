@@ -1,0 +1,19 @@
+.lake-translate {
+    transition: transform var(--duration) ease-in-out;
+}
+
+.lake-translate-start-right {
+    transform: translateX(var(--distance));
+}
+
+.lake-translate-start-left {
+    transform: translateX(calc(-1 * var(--distance)));
+}
+
+.lake-translate-start-bottom {
+    transform: translateY(calc(-1 * var(--distance)));
+}
+
+.lake-translate-start-top {
+    transform: translateY(var(--distance));
+}
