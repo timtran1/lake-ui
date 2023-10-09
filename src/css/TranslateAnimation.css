@@ -2,11 +2,11 @@
     transition: transform var(--duration) ease-in-out;
 }
 
-.lake-translate-start-right {
+.lake-translate-start-left {
     transform: translateX(var(--distance));
 }
 
-.lake-translate-start-left {
+.lake-translate-start-right {
     transform: translateX(calc(-1 * var(--distance)));
 }
 
