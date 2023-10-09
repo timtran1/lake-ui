@@ -16,6 +16,7 @@ import {default as useIsInViewport} from './utilities/useIsInViewport';
 import {default as Checkbox} from './Checkbox';
 import {default as TypingAnimation} from './TypingAnimation';
 import {default as TranslateAnimation} from './TranslateAnimation';
+import {default as FadeAnimation} from './FadeAnimation';
 
 export {
     Input,
@@ -35,5 +36,6 @@ export {
     useIsInViewport,
     Checkbox,
     TypingAnimation,
-    TranslateAnimation
+    TranslateAnimation,
+    FadeAnimation
 };

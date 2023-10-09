@@ -1,0 +1,12 @@
+.lake-fade {
+    transition: opacity var(--duration) ease-in-out var(--delay);
+}
+
+.lake-fade-start {
+    opacity: var(--opacity-start);
+}
+.lake-fade-end {
+    opacity: var(--opacity-end);
+}
+
+
