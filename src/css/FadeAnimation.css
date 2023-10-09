@@ -3,7 +3,10 @@
 }
 
 .lake-fade-start {
-    opacity: var(--opacity);
+    opacity: var(--opacity-start);
+}
+.lake-fade-end {
+    opacity: var(--opacity-end);
 }
 
 
