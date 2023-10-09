@@ -17,3 +17,8 @@
 .lake-translate-start-top {
     transform: translateY(var(--distance));
 }
+
+.overflow-hidden {
+    overflow: hidden;
+}
+  

@@ -5,9 +5,10 @@ import baseProps from "./types/basePropType";
 import './css/TranslateAnimation.css'
 
 export interface TranslateAnimationProps extends baseProps {
-    to?: string
+    to?: 'right' | 'top' | 'bottom' | 'left'
     duration?: number
     distance?: string
+    mask?: boolean
 }
 
 export default function TranslateAnimation(props: TranslateAnimationProps) {
@@ -17,6 +18,7 @@ export default function TranslateAnimation(props: TranslateAnimationProps) {
         distance = '100%',
         children,
         className = '',
+        mask = false,
         ...other
     } = props
 
@@ -41,14 +43,19 @@ export default function TranslateAnimation(props: TranslateAnimationProps) {
     }
 
     return (
-        <div ref={ref} className={`lake-translate ${isInViewport ? '' : translateClass} ${className}`}
-             style={{
-                 '--duration': `${duration}s`,
-                 '--distance': distance,
-             } as React.CSSProperties}
-             {...other}
+        <div 
+            className={`${mask ? 'overflow-hidden' : ''} ${className}`}
+            {...other}
         >
-            {children}
+            <div ref={ref} className={`lake-translate ${isInViewport ? '' : translateClass}`}
+                style={{
+                    '--duration': `${duration}s`,
+                    '--distance': distance,
+                } as React.CSSProperties}
+                
+            >
+                {children}
+            </div>
         </div>
     )
 }
