@@ -10,6 +10,7 @@ export interface TranslateAnimationProps extends baseProps {
     distance?: string
     mask?: boolean
     delay?: number
+    repeat?: boolean
 }
 
 export default function TranslateAnimation(props: TranslateAnimationProps) {
@@ -21,29 +22,31 @@ export default function TranslateAnimation(props: TranslateAnimationProps) {
         className = '',
         mask = false,
         delay = 0,
+        repeat = false,
         ...other
     } = props
 
 
     const ref: React.MutableRefObject<any> = useRef(null)
-    const isInViewport: boolean = useIsInViewport(ref)
-    const [textTranslate, setTextTranslate] = useState('')
-
-    let translateClass: string= ''
-    switch (to) {
-        case 'right':
-            translateClass = 'lake-translate-start-right'
-            break
-        case 'top':
-            translateClass = 'lake-translate-start-top'
-            break
-        case 'bottom':
-            translateClass = 'lake-translate-start-bottom'
-            break
-        case 'left':
-            translateClass = 'lake-translate-start-left'
-            break
-    }
+    let isInViewport: boolean = useIsInViewport(ref)
+    const translateClass = useRef('');
+    const [textTranslate, setTextTranslate] = useState(() => {
+        switch (to) {
+            case 'right':
+                translateClass.current = 'lake-translate-start-right'
+                break
+            case 'top':
+                translateClass.current = 'lake-translate-start-top'
+                break
+            case 'bottom':
+                translateClass.current = 'lake-translate-start-bottom'
+                break
+            case 'left':
+                translateClass.current = 'lake-translate-start-left'
+                break
+        }
+        return translateClass.current;
+    })
 
     useEffect(() => {
         if (isInViewport) {
@@ -51,7 +54,9 @@ export default function TranslateAnimation(props: TranslateAnimationProps) {
                 setTextTranslate('');
             }, delay * 1000);
         } else {
-            setTextTranslate(translateClass);
+            if (repeat) {
+                setTextTranslate(translateClass.current);
+            }
         }
     }, [isInViewport, delay]);
 
@@ -62,7 +67,7 @@ export default function TranslateAnimation(props: TranslateAnimationProps) {
         >
             <div ref={ref} className={`lake-translate ${textTranslate}`}
                 style={{
-                    '--duration': `${duration}s`,
+                    '--duration': `${textTranslate ? 0 : duration}s`,
                     '--distance': distance,
                 } as React.CSSProperties}
             >
